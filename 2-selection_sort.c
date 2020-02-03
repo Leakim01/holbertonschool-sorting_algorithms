@@ -21,30 +21,27 @@ void _swap(int *array, int a, int b)
 
 void selection_sort(int *array, size_t size)
 {
-	unsigned int i, j, k;
+	unsigned int i, j, cp;
 
-	for (i = 0, k = 1; i < size;)
+	if (array == NULL || size < 2)
+		return;
+
+	for (i = 0; i < size; i++)
 	{
-		if (array[i] > array[i + k])
+		cp = i;
+		for (j = i + 1; j < size; j++)
 		{
-			if (i + 1 < size)
+			if (array[cp] > array[j])
 			{
-				_swap(array, i, i + k);
+				_swap(array, cp, j);
+				if (array[cp] < array[i])
+				{
+					_swap(array, cp, i);
+				}
+				cp = j;
 				print_array(array, size);
 			}
-			for (j = (i + k + 1); j < size; j++)
-			{
-				if (array[i] > array[j])
-				{
-					_swap(array, i, j);
-					print_array(array, size);
-				}
-			}
-			i++;
-			k = 1;
 		}
-		else
-			k++;
 	}
 
 }
