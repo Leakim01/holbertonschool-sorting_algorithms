@@ -1,17 +1,16 @@
 #include "sort.h"
 /**
  * _swap - swap two numbers
- * @array: array
  * @a: integer
  * @b: integer
  **/
-void _swap(int *array, int a, int b)
+void _swap(int *a, int *b)
 {
 	int tmp;
 
-	tmp = array[a];
-	array[a] = array[b];
-	array[b] = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 /**
  * selection_sort - sort array using selection sort algorithm
@@ -32,7 +31,7 @@ void selection_sort(int *array, size_t size)
 		{
 			if (array[i] > array[j])
 			{
-				_swap(array, i, j);
+				_swap(&array[i], &array[j]);
 				print_array(array, size);
 			}
 		}
