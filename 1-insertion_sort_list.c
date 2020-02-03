@@ -39,13 +39,26 @@ void swap_forward(listint_t *c)
 	listint_t *tmp, *head;
 
 	tmp = c->prev;
-	c->next->prev = tmp;
-	tmp->next = c->next;
-	c->next = c->next->next;
-	c->prev = tmp->next;
-	tmp->next->next = c;
-	if (c->next != NULL)
+
+	if (tmp != NULL)
+	{
+		tmp->next = c->next;
+		c->next->prev = tmp;
+	}
+	else
+		c->next->prev = NULL;
+	c->prev = c->next;
+	if (c->next->next != NULL)
+	{
+		c->next = c->next->next;
+		c->prev->next = c;
 		c->next->prev = c;
+	}
+	else
+	{
+		c->next->next = c;
+		c->next = NULL;
+	}
 	head = c;
 	while (head->prev != NULL)
 		head = head->prev;
