@@ -74,11 +74,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *c;
 
-	if (list == NULL)
-		return;
-	if (*list == NULL)
-		return;
-	if ((*list)->next == NULL)
+	if (list == NULL) || *list == NULL || (*list)->next == NULL)
 		return;
 	c = *list;
 
