@@ -72,10 +72,15 @@ void swap_forward(listint_t *c)
  **/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *c = *list;
+	listint_t *c;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (list == NULL)
 		return;
+	if (*list == NULL)
+		return;
+	if ((*list)->next == NULL)
+		return;
+	c = *list;
 
 	while (c->next != NULL)
 	{
