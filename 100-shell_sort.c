@@ -40,7 +40,7 @@ void shell_sort(int *array, size_t size)
 {
 	unsigned int flag = 0, gap = 1, i, j;
 
-	if (size < 2 || array == NULL)
+	if (size < 2)
 		return;
 	while (gap < size / 3)
 		gap = gap * 3 + 1;
