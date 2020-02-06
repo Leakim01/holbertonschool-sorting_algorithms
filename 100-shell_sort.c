@@ -38,8 +38,10 @@ void backward_insertion(int *array, int gap, int act)
  **/
 void shell_sort(int *array, size_t size)
 {
-	unsigned int flag = 0, gap = 1, i, j;
+	unsigned int gap = 1, i, j;
 
+	if (array == NULL)
+		return;
 	if (size < 2)
 		return;
 	while (gap < size / 3)
@@ -53,14 +55,9 @@ void shell_sort(int *array, size_t size)
 			{
 				_swap(&array[i], &array[j]);
 				backward_insertion(array, gap, i);
-				flag = 1;
 			}
 		}
-		if (flag == 1)
-		{
-			print_array(array, size);
-			flag = 0;
-		}
+		print_array(array, size);
 		gap /= 3;
 	}
 }
